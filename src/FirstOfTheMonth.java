@@ -3,19 +3,26 @@ public enum FirstOfTheMonth {
     JULY("July"), AUG("August"), SEPT("September"), OCT("October"), NOV("November"),
     DECEMBER("December");
 
-    private final String NAME = null;
+    private final String name;
     private int datesOnTheFirst;
 
-    FirstOfTheMonth() {
+    FirstOfTheMonth(String n) {
+        this.name = n;
         this.datesOnTheFirst = 0;
     }
 
 
+    public String getName() {return name;}
     public int getDatesOnTheFirst() {
         return datesOnTheFirst;
     }
 
     public void iterateDatesOnTheFirst(FirstOfTheMonth m) {
         ++datesOnTheFirst;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + ": " + this.getDatesOnTheFirst();
     }
 }

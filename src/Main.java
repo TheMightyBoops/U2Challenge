@@ -7,19 +7,19 @@ public class Main {
         }
 
 
-        String[] date;
+        String[] dateString;
         String line;
         while ((line = in.fileReadLine()) != null) {
+            // Modify csv lines to separate each segment with spaces.
             line = line.replace("\"", "").replace(".", "")
-                    .replace("-", "").replace(" ", "")
-                    .replace(",","");
+                    .replace("-", " ").replace(","," ");
 
-            System.out.println(line);
-            //date = line.split(",");
-            //for(int i=0; i < date.length; ++i) {
-            //    System.out.println(date[i]);
+            //System.out.println(line);
+            dateString = line.split(" ");
+            for(int i=0; i < date.length; ++i) {
+                System.out.println(date[i]);
 
-            //}
+            }
 
         }
         in.fileClose();

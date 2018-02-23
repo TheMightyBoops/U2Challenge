@@ -1,5 +1,7 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class DateDiff {
@@ -26,56 +28,26 @@ public class DateDiff {
       }
     }
 
-    private String monthSwitcher(String d) {
-        String monthChecker = d.substring(0,2);
-        switch (monthChecker) {
-            case "Jan":
-                d = d.replace("Jan", "1");
-                break;
-                case "Feb":
-                d = d.replace("Feb", "2");
-                break;
-                case "Mar":
-                d = d.replace("Mar", "3");
-                break;
-                case "Apr":
-                d = d.replace("Apr", "4");
-                break;
-                case "May":
-                d = d.replace("May", "5");
-                break;
-                case "Jun":
-                d = d.replace("Jun", "6");
-                break;
-                case "Jul":
-                d = d.replace("Jul", "7");
-                break;
-                case "Aug":
-                d = d.replace("Aug", "8");
-                break;
-                case "Sep":
-                d = d.replace("Sep", "9");
-                break;
-                case "Oct":
-                d = d.replace("Oct", "10");
-                break;
-                case "Nov":
-                d = d.replace("Nov", "11");
-                break;
-                case "Dec":
-                d = d.replace("Dec", "12");
-                break;
-                default:
-                    d = "error";
-                    break;
-        }
-
-        return d;
-    }
-
     public String dateSubtraction() {
         String subtractionData = "error";
-        long diff = date1.getTime() - date2.getTime();
-        return String.valueOf(diff);
+        //long diff = date1.getTime() - date2.getTime();
+        long totalDays=0, years=0, months=0, days=0,diff=0;
+        if(date1.before(date2)) {
+            diff = date2.getTime() - date1.getTime();
+            totalDays = diff/(1000*60*60*24);
+
+            years = totalDays / 365;
+            if(totalDays/365!= 0)
+                months = (totalDays % (totalDays/365));
+
+
+
+
+        } else if (date2.before(date1)) {
+            days = (date1.getTime() - date2.getTime())/(1000*60*60*24);
+        }
+
+
+        return String.valueOf(totalDays)+" "+"Days:"+ String.valueOf(days) + " Months:"+ String.valueOf(months) + " Years:" + String.valueOf(years);
     }
 }

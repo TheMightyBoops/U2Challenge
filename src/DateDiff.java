@@ -37,14 +37,16 @@ public class DateDiff {
             totalDays = diff/(1000*60*60*24);
 
             years = totalDays / 365;
-            if(totalDays/365!= 0)
-                months = (totalDays % (totalDays/365));
-
-
-
+            months = (totalDays - (365 * years))/30;
+            days = totalDays - (30 * months + (365 * years));
 
         } else if (date2.before(date1)) {
-            days = (date1.getTime() - date2.getTime())/(1000*60*60*24);
+            diff = date1.getTime() - date2.getTime();
+            totalDays = diff/(1000*60*60*24);
+
+            years = totalDays / 365;
+            months = (totalDays - (365 * years))/30;
+            days = (totalDays - ((30 * months) + (365 * years)));
         }
 
 

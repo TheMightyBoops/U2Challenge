@@ -2,14 +2,17 @@ public class Main {
     public static FileInput in = new FileInput("date_diff.csv");
 
     public static void main(String[] args) {
-        for (FirstOfTheMonth fir : FirstOfTheMonth.values()) {
-            //System.out.println(fir.toString());
-        }
+
 
 
         String[] dateString;
         String line;
         DateDiff datesToCompare;
+
+
+
+
+
         while ((line = in.fileReadLine()) != null) {
             String date1, date2;
             // Modify csv lines to separate each segment with spaces.
@@ -24,9 +27,14 @@ public class Main {
             datesToCompare = new DateDiff(date1,date2);
             //System.out.println(line);
             System.out.println(datesToCompare.dateSubtraction());
+            datesToCompare.checkMonths();
 
 
         }
         in.fileClose();
+        for (FirstOfTheMonth fir : FirstOfTheMonth.values()) {
+            System.out.println(fir.toString());
+        }
+
     }
 }
